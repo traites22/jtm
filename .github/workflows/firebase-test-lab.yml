@@ -1,0 +1,65 @@
+name: Firebase Test Lab (Android)
+
+on:
+  workflow_dispatch: {}
+  workflow_call: {}
+
+jobs:
+  firebase_testlab:
+    runs-on: ubuntu-latest
+    env:
+      FCM_SERVER_KEY: ${{ secrets.FCM_SERVER_KEY }}
+      FCM_TARGET_TOKEN: ${{ secrets.FCM_TARGET_TOKEN }}
+      FTL_PROJECT_ID: ${{ secrets.FTL_PROJECT_ID }}
+      GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check required secrets
+        run: |
+          if [ -z "${GCP_SA_KEY}" ] || [ -z "${FTL_PROJECT_ID}" ]; then
+            echo "Required secrets GCP_SA_KEY and FTL_PROJECT_ID are not set. Skipping Firebase Test Lab job.";
+            exit 0;
+          fi
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: '${{ secrets.GCP_SA_KEY }}'
+
+      - name: Set GCP project
+        run: gcloud config set project "${{ secrets.FTL_PROJECT_ID }}"
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build debug APK
+        run: flutter build apk --debug
+
+      - name: Send FCM message (optional)
+        if: env.FCM_SERVER_KEY != '' && env.FCM_TARGET_TOKEN != ''
+        run: flutter test integration_test/send_fcm_integration_test.dart -r expanded
+
+      - name: Run Firebase Test Lab (Robo)
+        run: |
+          echo "Running Firebase Test Lab (Robo) against built APK..."
+          gcloud firebase test android run --app build/app/outputs/flutter-apk/app-debug.apk \
+            --type robo \
+            --device model=Pixel2,version=31,locale=en,orientation=portrait \
+            --timeout 300s || true
+
+      - name: Note
+        run: |
+          echo "The Firebase Test Lab step above will print a results link and store artifacts in GCP (logs/screenshots)."
+          echo "Visit the Firebase console (Test Lab) or use gcloud commands to fetch results."

@@ -1,0 +1,149 @@
+name: jtm
+description: "Application de rencontre JTM - Connectez-vous avec des personnes partageant vos intérêts"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.10.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  # Core dependencies
+  cupertino_icons: ^1.0.8
+  material_color_utilities: 0.11.1
+  
+  # Storage and persistence
+  flutter_secure_storage: ^9.0.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  shared_preferences: ^2.2.3
+  
+  # Media and image handling
+  image_picker: ^1.2.1
+  cached_network_image: ^3.3.3
+  photo_view: ^0.14.0
+  
+  # Authentication and security
+  local_auth: ^2.1.0
+  permission_handler: ^12.0.1
+  
+  # Firebase services
+  firebase_core: ^2.32.0
+  firebase_messaging: ^14.9.4
+  firebase_auth: ^4.17.8
+  cloud_firestore: ^4.17.5
+  firebase_crashlytics: ^3.4.9
+  firebase_performance: ^0.9.3+8
+  firebase_analytics: ^10.8.0
+  firebase_storage: ^11.6.9
+  
+  # Notifications
+  flutter_local_notifications: ^19.5.0
+  
+  # Network and connectivity
+  http: ^1.2.1
+  connectivity_plus: ^5.0.1
+  url_launcher: ^6.1.14
+  geocoding: ^3.0.0
+  geolocator: ^12.0.0
+  
+  # UI enhancements
+  shimmer: ^3.0.0
+  lottie: ^2.7.0
+  animations: ^2.0.0
+  
+  # Environment and configuration
+  flutter_dotenv: ^5.1.0
+  uuid: ^4.4.0
+  crypto: ^3.0.3
+  
+  # State management (optional - replace with your preferred solution)
+  provider: ^6.1.2
+  
+  # Testing
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  mockito: ^5.4.4
+  build_runner: ^2.4.9
+  json_serializable: ^6.8.0
+  fake_cloud_firestore: ^2.4.2
+  firebase_auth_mocks: ^0.13.0
+  network_image_mock: ^2.1.1
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/animations/
+    - assets/fonts/
+    - assets/config/
+    - .env
+
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Roboto-Italic.ttf
+          style: italic
+    
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 700
+
+# Configuration for different build types
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/app_icon.png"
+
+# App configuration
+flutter_native_splash:
+  color: "#E91E63"
+  image: assets/images/splash.png
+  android_gravity: center
+  ios_content_mode: center
+  
+# Performance optimizations
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  
+linter:
+  rules:
+    prefer_single_quotes: true
+    avoid_print: true
+    prefer_const_constructors_in_immutables: true
+    prefer_const_literals_to_create_immutables: true
+    unnecessary_const: true
+    avoid_unnecessary_containers: true
+    sized_box_for_whitespace: true
+    use_key_in_widget_constructors: true
+    avoid_redundant_type_arguments: true
+    prefer_final_fields: true
+    prefer_final_locals: true
+    prefer_typing_uninitialized_variables: false
+    avoid_types_on_closure_parameters: true
+    avoid_web_libraries_in_flutter: false

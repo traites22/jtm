@@ -1,0 +1,31 @@
+{
+    "app_name": "JTM",
+    "app_version": "1.0.0",
+    "build_number": "1",
+    "environment": "development",
+    "api_base_url": "https://api.jtm.com",
+    "firebase_config": {
+        "project_id": "jtm-app",
+        "messaging_sender_id": "1234567890",
+        "app_id": "1:1234567890:android:abcdef123456",
+        "api_key": "AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    },
+    "features": {
+        "biometric_auth": true,
+        "location_sharing": true,
+        "image_sharing": true,
+        "voice_messages": false,
+        "video_calls": false
+    },
+    "ui": {
+        "theme_mode": "light",
+        "primary_color": "#E91E63",
+        "secondary_color": "#2196F3",
+        "font_family": "Roboto"
+    },
+    "privacy": {
+        "analytics_enabled": true,
+        "crash_reporting": true,
+        "data_collection": true
+    }
+}

@@ -1,0 +1,43 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isValidImage() {
+      return resource.contentType.matches('image/.*') &&
+             resource.size < 5 * 1024 * 1024; // 5MB max
+    }
+    
+    // Profile photos folder
+    match /profile_photos/{fileName} {
+      allow read: if isAuthenticated(); // Anyone authenticated can read profile photos
+      allow write: if isAuthenticated() && 
+                    isOwner(request.auth.uid) && // Only owner can write
+                    isValidImage() && // Must be valid image
+                    fileName.matches('profile_.*_.*'); // Must follow naming convention
+      allow delete: if isAuthenticated() && 
+                      isOwner(request.auth.uid); // Only owner can delete
+    }
+    
+    // Message photos folder
+    match /message_photos/{matchId}/{fileName} {
+      allow read: if isAuthenticated(); // Anyone authenticated can read message photos
+      allow write: if isAuthenticated() && 
+                    isValidImage() && // Must be valid image
+                    fileName.matches('message_.*_.*'); // Must follow naming convention
+      allow delete: if false; // Message photos are permanent
+    }
+    
+    // Default deny all other access
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

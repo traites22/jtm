@@ -1,0 +1,29 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Profile images - accès complet pour l'utilisateur, lecture publique pour les profils publics
+    match /profile_images/{userId}/{allPaths=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Chat images - accès pour les participants du match
+    match /chat_images/{matchId}/{allPaths=**} {
+      allow read: if request.auth != null && 
+        request.auth.uid in get(/databases/$(database)/documents/matches/$(matchId)).data.users;
+      allow write: if request.auth != null && 
+        request.auth.uid in get(/databases/$(database)/documents/matches/$(matchId)).data.users;
+    }
+    
+    // Temporary uploads - accès temporaire pour l'utilisateur
+    match /temp_uploads/{userId}/{allPaths=**} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Admin files - accès admin uniquement
+    match /admin/{allPaths=**} {
+      allow read, write: if request.auth != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+    }
+  }
+}

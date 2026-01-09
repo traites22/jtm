@@ -29,3 +29,4 @@ jobs:
         flutter test test/unit/simple_validation_test.dart --no-pub
         flutter test test/messaging_service_test.dart --no-pub
         flutter test test/basic_widget_test.dart --no-pub
+        flutter test test/unit/firebase_service_test.dart --no-pub

@@ -31,6 +31,8 @@ dependencies:
   # Authentication and security
   local_auth: ^2.1.0
   permission_handler: ^12.0.1
+  google_sign_in: ^6.2.1
+  flutter_facebook_auth: ^6.0.0
   
   # Firebase services
   firebase_core: ^2.32.0
@@ -48,6 +50,13 @@ dependencies:
   # Network and connectivity
   http: ^1.2.1
   connectivity_plus: ^5.0.1
+  
+  # Location services
+  geolocator: ^10.1.0
+  geocoding: ^2.1.0
+  
+  # Additional dependencies
+  flutter_dotenv: ^5.1.1
   url_launcher: ^6.1.14
   geocoding: ^3.0.0
   geolocator: ^12.0.0

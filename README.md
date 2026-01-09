@@ -1,52 +1,67 @@
-# JTM
+# JTM - Application de Rencontre Moderne
 
-Ceci est le projet Flutter *JTM* créé pour démarrer le développement.
+🔥 **Application de rencontre Flutter avec Firebase, authentification sociale, notifications push, localisation et plus !**
 
-## 🚀 Infrastructure de Tests
+## 🚀 Fonctionnalités Complètes
 
-✅ **CI/CD opérationnel avec GitHub Actions**
-- Tests unitaires automatiques
-- Analyse de code intégrée
-- Pipeline rapide et fiable
+### ✅ **Infrastructure de Niveau Entreprise**
+- **Firebase Hosting** - Déploiement web avec HTTPS et CDN
+- **CI/CD GitHub Actions** - Tests automatiques et déploiement continu
+- **Protections de branche** - Qualité et sécurité du code
+- **Monitoring avancé** - Performance et erreurs en temps réel
 
-## 📋 Plan d'Action
+### 🔐 **Authentification Multi-fournisseurs**
+- **Email/Password** - Authentification classique
+- **Google Sign-In** - Connexion via compte Google
+- **Facebook Login** - Connexion via compte Facebook
+- **Account Linking** - Lier plusieurs providers
+- **Biometric Auth** - Empreintes digitales et Face ID
 
-- [x] Infrastructure de tests
-- [x] Pipeline CI/CD
-- [x] Protections de branche
-- [x] Tests de fonctionnalités
-- [x] Déploiement automatisé
+### 📱 **Notifications en Temps Réel**
+- **Push Notifications** - Firebase Cloud Messaging
+- **Notifications locales** - Alertes dans l'application
+- **Types de notifications** : Matchs, messages, vues de profil
+- **Préférences utilisateur** - Contrôle total des notifications
 
-## 🎉 INFRASTRUCTURE 100% FONCTIONNELLE
+### 🌍 **Services de Localisation**
+- **GPS Tracking** - Géolocalisation précise
+- **Geocoding** - Conversion adresse ↔ coordonnées
+- **Recherche par distance** - Trouver des utilisateurs à proximité
+- **Filtres de localisation** - Par distance et préférences
 
-✅ **CI/CD opérationnel** avec GitHub Actions
-✅ **Protections de branche** activées
-✅ **Tests automatiques** fonctionnels
-✅ **Pipeline rapide et fiable**
+### ⚡ **Backend Serverless**
+- **Cloud Functions** - Logique métier sans serveur
+- **Firestore Database** - Base de données NoSQL sécurisée
+- **Cloud Storage** - Stockage d'images optimisé
+- **Règles de sécurité** - Protection des données utilisateur
 
-### 🚀 Utilisation Quotidienne
+### 🎯 **Fonctionnalités de Rencontre**
+- **Swipe System** - Interface moderne de matching
+- **Matching Algorithm** - Algorithmes intelligents de compatibilité
+- **Chat en temps réel** - Messagerie instantanée
+- **Profils détaillés** - Photos, intérêts, préférences
+- **Filtres avancés** - Par âge, distance, intérêts
 
+## 📋 Démarrage Rapide
+
+### Prérequis
+- **Flutter SDK** 3.38.5+
+- **Node.js** 18+
+- **Firebase CLI**
+- **Android Studio** / **VS Code**
+
+### Installation
 ```bash
-# Faites vos modifications
-git add .
-git commit -m "feat: votre modification"
-git push origin main
+# 1. Cloner le repository
+git clone https://github.com/traites22/jtm.git
+cd jtm
 
-# Les tests s'exécutent automatiquement !
-# Allez vérifier sur https://github.com/traites22/jtm/actions
-```
+# 2. Installer les dépendances
+flutter pub get
 
-### 📊 Monitoring
-
-- **Actions GitHub** : https://github.com/traites22/jtm/actions
-- **Pull Requests** : https://github.com/traites22/jtm/pulls
-- **Protections** : https://github.com/traites22/jtm/settings/branches
-
-## Prérequis
-- Flutter SDK installé et accessible depuis le PATH
-- Android SDK + Command-line tools installés (licences acceptées)
-- Java / JDK installé (fourni par Android Studio ou OpenJDK)
-- Visual Studio (optionnel pour build Windows)
+# 3. Configurer Firebase
+firebase login
+firebase use jtm-dev
 - VS Code (recommandé) avec les extensions **Dart** et **Flutter**
 
 ## Démarrage rapide

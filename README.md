@@ -2,6 +2,21 @@
 
 Ceci est le projet Flutter *JTM* créé pour démarrer le développement.
 
+## 🚀 Infrastructure de Tests
+
+✅ **CI/CD opérationnel avec GitHub Actions**
+- Tests unitaires automatiques
+- Analyse de code intégrée
+- Pipeline rapide et fiable
+
+## 📋 Plan d'Action
+
+- [x] Infrastructure de tests
+- [x] Pipeline CI/CD
+- [ ] Protections de branche (en cours)
+- [ ] Tests de fonctionnalités
+- [ ] Déploiement automatisé
+
 ## Prérequis
 - Flutter SDK installé et accessible depuis le PATH
 - Android SDK + Command-line tools installés (licences acceptées)

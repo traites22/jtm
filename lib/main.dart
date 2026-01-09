@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'services/notification_service.dart';
 import 'services/logging_service_minimal.dart';
+import 'services/firebase_service.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'firebase_options.dart';
@@ -24,11 +25,9 @@ void main() async {
 
   // Initialize Firebase with environment-specific options first
   try {
-    // Check if Firebase is already initialized
-    if (Firebase.apps.isEmpty) {
-      String environment = dotenv.env['ENVIRONMENT'] ?? 'development';
-      await Firebase.initializeApp(options: DefaultFirebaseOptions.getPlatformOptions(environment));
-    }
+    // Initialize Firebase Service
+    await FirebaseService.instance.initialize();
+
     FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
 
     // Initialize logging service after Firebase

@@ -3,11 +3,13 @@ import 'dart:typed_data';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:path/path.dart' as path;
+import 'firebase_service.dart';
 
 class StorageService {
-  static final FirebaseStorage _storage = FirebaseStorage.instance;
-  static final FirebaseAuth _auth = FirebaseAuth.instance;
+  static final FirebaseStorage _storage = FirebaseService.instance.storage;
+  static final FirebaseAuth _auth = FirebaseService.instance.auth;
 
   /// Uploader une photo de profil
   static Future<String?> uploadProfilePhoto(XFile imageFile) async {

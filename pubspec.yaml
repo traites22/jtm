@@ -52,14 +52,12 @@ dependencies:
   connectivity_plus: ^5.0.1
   
   # Location services
-  geolocator: ^10.1.0
-  geocoding: ^2.1.0
+  geolocator: ^12.0.0
+  geocoding: ^3.0.0
   
   # Additional dependencies
   flutter_dotenv: ^5.1.1
   url_launcher: ^6.1.14
-  geocoding: ^3.0.0
-  geolocator: ^12.0.0
   
   # UI enhancements
   shimmer: ^3.0.0
@@ -67,7 +65,6 @@ dependencies:
   animations: ^2.0.0
   
   # Environment and configuration
-  flutter_dotenv: ^5.1.0
   uuid: ^4.4.0
   crypto: ^3.0.3
   

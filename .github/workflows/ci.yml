@@ -1,4 +1,4 @@
-name: Simple Test
+name: CI Pipeline
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   test:
+    name: Status Check
     runs-on: ubuntu-latest
     
     steps:
@@ -16,11 +17,15 @@ jobs:
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.16.0'
+        flutter-version: '3.38.5'
         channel: 'stable'
+        cache: true
         
     - name: Install dependencies
       run: flutter pub get
       
     - name: Run tests
-      run: flutter test test/unit/simple_validation_test.dart
+      run: |
+        flutter test test/unit/simple_validation_test.dart --no-pub
+        flutter test test/messaging_service_test.dart --no-pub
+        flutter test test/basic_widget_test.dart --no-pub
